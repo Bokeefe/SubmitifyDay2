@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+	<script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+</head>
+<body>
+	Username: <input id="username">
+	Password: <input id="password" type="password">
+	<button id="login">Log In</button>
+	<button id="signup">Create a new account</button>
+
+	<script>
+		$('#login').click(function() {
+			$.post('/api/login', {
+				username: $('#username').val(),
+				password: $('#password').val()
+			}, function(res) {
+				if (res.status === "success") {
+					document.location = "/";
+				} else {
+					alert(res.message);
+				}
+			});
+		});
+
+		$('#signup').click(function() {
+			$.post('/api/signup', {
+				username: $('#username').val(),
+				password: $('#password').val()
+			}, function(res) {
+				if (res.status === "success") {
+					alert("You have created a new account!");
+				} else {
+					alert(res.message);
+				}
+			});
+		});
+
+
+	</script>
+</body>
+</html>
