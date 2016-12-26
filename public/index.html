@@ -29,9 +29,9 @@
 	</div>
 <script type="text/javascript">
 	$('#logout').click(function() {
-		//what command could kick the user off?
 		console.log("this works");
-	    //window.location.href = "/Sign_In.html";
+		res.session.user = null;
+		document.location = "/login.html";
 	});
 </script>
 </body>
